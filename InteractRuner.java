@@ -1,29 +1,28 @@
 import java.util.Scanner;
-
+//Класс для запуска калькулятора. Поддерживает ввод пользователя.
 public class InteractRuner{
 
 	
 	
 	public static void main(String[] arg){
-		Scaner reader = new Scaner(System.in);
+		Scanner reader = new Scanner(System.in);
 		try{
-			calculator calc = new calculator();
+			Calculator calc = new Calculator();
 			String exit="no";
 			while(!exit.equals("yes")){
-			
+				System.out.println("Enter first argument: ");
+				String first = reader.next();
+				System.out.println("Enter second argument: ");
+				String second = reader.next();
+				calc.add(Integer.valueOf(first),Integer.valueOf(second));
+				System.out.println("Result : " + calc.getResult());
+				calc.cleanResult();
+				System.out.println("Exit: yes / no");
+				exit = reader.next();
+				
 			}
 		}finally{
 			reader.close();
 		}
 	}
-	
-	public int getResult (){
-		return this.result;
-	}
-
-	public void cleanResult (){
-		this.result=0;
-	}
-	
-
 }
